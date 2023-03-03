@@ -14,31 +14,46 @@ import { urlFor } from "../lib/client";
 
 const Cart = () => {
   const cartRef = useRef();
-  const { totalPrice, totalQuantities, cartItems, setShowCart, toggleCartItemQuantity, onRemove } =
-    useStateContext();
+  const {
+    totalPrice,
+    totalQuantities,
+    cartItems,
+    setShowCart,
+    toggleCartItemQuantity,
+    onRemove,
+  } = useStateContext();
 
   return (
-    <div className="cart-wrapper" ref={cartRef}>
-      <div className="cart-container">
+    <div
+      className="w-screen bg-[rgba(0, 0, 0, 0.5)] fixed right-0 top-0 z-[100] transition-all duration-1000 ease-in-out"
+      ref={cartRef}
+    >
+      <div className="h-screen w-[600px] bg-white float-right px-[40px] py-[10px] relative">
         <button
           type="button"
-          className="cart-heading"
+          className="flex items-center text-[18px] font-medium cursor-pointer gap-2 ml-[10px] bg-transparent mt-[35px]"
           onClick={() => setShowCart(false)}
         >
           <AiOutlineLeft />
-          <span className="heading">Your Cart</span>
-          <span className="cart-num-items">({totalQuantities} items)</span>
+          <span className="ml-[10px]">Your Cart</span>
+          <span className="ml-[10px] text-[#f02d34]">
+            ({totalQuantities} items)
+          </span>
         </button>
 
         {cartItems.length < 1 && (
-          <div className="empty-cart">
-            <AiOutlineShopping size={150} />
-            <h3>Your shopping bag is empty</h3>
+          <div className="m-[40px] text-center">
+            <div className="flex justify-center">
+              <AiOutlineShopping size={150} />
+            </div>
+            <h3 className="font-semibold text-[20px]">
+              Your shopping bag is empty
+            </h3>
             <Link href="/">
               <button
                 type="button"
                 onClick={() => setShowCart(false)}
-                className="btn"
+                className="w-full max-w-[400px] px-[10px] py-[12px] border-none rounded-[15px] text-[20px] mt-[10px] uppercase bg-[#f02d34] text-white cursor-pointer scale-100 transition duration-500 ease hover:scale-110"
               >
                 Continue Shopping
               </button>
@@ -46,33 +61,49 @@ const Cart = () => {
           </div>
         )}
 
-        <div className="product-container">
+        <div className="flex flex-wrap justify-center gap-[15px] mt-[20px] w-full">
           {cartItems.length >= 1 &&
             cartItems.map((item) => (
-              <div className="product" key={item._id}>
+              <div className="flex gap-[30px] p-[20px]" key={item._id}>
                 <img
                   src={urlFor(item?.image[0])}
-                  className="cart-product-image"
+                  className="w-[180px] h-[150px] rounded-[15px] bg-[#ebebeb]"
                 />
                 <div className="item-desc">
-                  <div className="flex top">
+                  <div className="flex justify-between w-[350px] text-[#324d67] top">
                     <h5>{item.name}</h5>
                     <h4>${item.price}</h4>
                   </div>
-                  <div className="flex bottom">
+                  <div className="flex justify-between w-[350px] text-[#324d67] mt-[60px]">
                     <div>
-                      <p className="quantity-desc">
-                        <span className="minus" onClick={() => toggleCartItemQuantity(item._id, 'dec')}>
+                      <p className="border-[1px] border-gray p-[6px]">
+                        <span
+                          className="border-r-[1px] border-[#808080d9] text-[#f02d34]"
+                          onClick={() =>
+                            toggleCartItemQuantity(item._id, "dec")
+                          }
+                        >
                           <AiOutlineMinus />
                         </span>
-                        <span className="num">{item.quantity}</span>
-                        <span className="plus" onClick={() => toggleCartItemQuantity(item._id, 'inc')}>
+                        <span className="border border-r-[1px] border-[#808080d9]">
+                          {item.quantity}
+                        </span>
+                        <span
+                          className="text-[rgb(49, 168, 49)]"
+                          onClick={() =>
+                            toggleCartItemQuantity(item._id, "inc")
+                          }
+                        >
                           <AiOutlinePlus />
                         </span>
                       </p>
                     </div>
-                    <button type="button" className="remove-item" onClick={() => onRemove(item._id)}>
-                      <TiDeleteOutline/>
+                    <button
+                      type="button"
+                      className="remove-item"
+                      onClick={() => onRemove(item._id)}
+                    >
+                      <TiDeleteOutline />
                     </button>
                   </div>
                 </div>
@@ -86,7 +117,9 @@ const Cart = () => {
               <h3>${totalPrice}</h3>
             </div>
             <div className="btn-container">
-              <button type="button" className="btn" onClick="">Pay with Stripe</button>
+              <button type="button" className="btn" onClick="">
+                Pay with Stripe
+              </button>
             </div>
           </div>
         )}

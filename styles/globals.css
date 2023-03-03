@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 html,
 body, * {
   padding: 0;
@@ -416,11 +420,10 @@ padding: 30px 65px;
 }
 .product-detail-container{
   display: flex;
- gap: 40px;
- margin: 40px;
- margin-top: 60px;
- color: #324d67;
-
+  gap: 40px;
+  margin: 40px;
+  margin-top: 60px;
+  color: #324d67;
 }
 
 .product-detail-image{
@@ -525,7 +528,7 @@ padding: 30px 65px;
 }
 .quantity-desc{
   border: 1px solid gray;
-padding: 6px;
+  padding: 6px;
 }
 .quantity-desc span{
   font-size: 16px;
@@ -542,7 +545,6 @@ padding: 6px;
 }
 .quantity-desc .plus{
   color: rgb(49, 168, 49);
-
 }
 
 .maylike-products-wrapper{
