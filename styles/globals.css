@@ -20,16 +20,6 @@ a {
   text-decoration: none;
 }
 
-.main-container{
-max-width: 1400px; 
-margin: auto;
-width: 100%;
-
-}
-.layout{
-  padding: 10px;
-}
-
 .navbar-container{
   display: flex;
   justify-content: space-between;
@@ -191,13 +181,12 @@ flex-direction: column;
 .desc p{
   color: #5f5f5f;
   font-weight: 100;
-text-align: end;
+  text-align: end;
 }
 .desc h5{
   margin-bottom: 12px;
   font-weight: 700;
   font-size: 16px;
-  /* color: black; */
   align-self: flex-end;
 }
 .products-heading{
@@ -250,8 +239,6 @@ text-align: end;
 }
 .footer-banner-image{
   position: absolute;
-  /* top: -35%;
-  left: 8%; */
   top: -25%;
   left: 25%;
 }
@@ -354,16 +341,6 @@ padding: 20px 10px;
   height: 150px;
     border-radius: 15px;
  background-color: #ebebeb;
-}
-.item-desc .flex{
-  display: flex;
-  justify-content: space-between;
-  width: 350px;
-   color: #324d67;
-
-}
-.item-desc .bottom{
-  margin-top: 60px;
 }
 .flex h5{
   font-size: 24px;
@@ -495,7 +472,7 @@ padding: 30px 65px;
 }
 .buttons .add-to-cart{
   padding: 10px 20px;
-  border: 1px solid #f02d34 ;
+  border: 1px solid #f02d34;
   margin-top: 40px;
   font-size: 18px;
   font-weight: 500;
@@ -511,7 +488,6 @@ padding: 30px 65px;
 }
 .buttons .buy-now{
   width: 200px;
-
   padding: 10px 20px;
   background-color: #f02d34;
   color: white;
@@ -554,7 +530,6 @@ padding: 30px 65px;
   text-align: center;
   margin: 50px;
   color: #324d67;
-
   font-size: 28px;
 }
 .maylike-products-container{
@@ -712,17 +687,11 @@ margin-top: 160px;
     margin: 20px;
   }
 
-.item-desc .flex{
-  width: 200px;
-}
 .top{
   flex-wrap: wrap;
   gap: 10px;
 
 
-}
-.item-desc .bottom{
-  margin-top: 30px;
 }
 .flex h5{
   font-size: 16px;

@@ -4,14 +4,14 @@ import Footer from "./Footer"
 
 const Layout = ({children}) => {
   return (
-    <div className='layout'>
+    <div className='p-[10px]'>
       <Head>
         <title>Store</title>
       </Head>
       <header>
         <Navbar/>
       </header>
-      <main className='main-container'>
+      <main className='max-w-[1400px] m-auto w-full'>
         {children}
       </main>
       <footer>

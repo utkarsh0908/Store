@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useEffect } from "react";
+import { createContext, useContext, useState } from "react";
 import { toast } from "react-hot-toast"
 
 const Context = createContext()
@@ -23,12 +23,12 @@ export const StateContext = ({ children }) => {
             const updatedCartItems = cartItems.map((cartProduct) => {
                 if(cartProduct._id === product._id) return {
                     ...cartProduct,
-                    quantity: cartProduct.quanity + quantity
+                    quantity: cartProduct.quantity + quantity
                 }
             })
 
             setCartItems(updatedCartItems)
-        }else {
+        } else {
             product.quantity = quantity
             setCartItems([...cartItems, {...product}])
         }

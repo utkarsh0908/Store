@@ -28,7 +28,7 @@ const Cart = () => {
       className="w-screen bg-[rgba(0, 0, 0, 0.5)] fixed right-0 top-0 z-[100] transition-all duration-1000 ease-in-out"
       ref={cartRef}
     >
-      <div className="h-screen w-[600px] bg-white float-right px-[40px] py-[10px] relative">
+      <div className="border h-screen w-[600px] bg-white float-right px-[40px] py-[10px] relative">
         <button
           type="button"
           className="flex items-center text-[18px] font-medium cursor-pointer gap-2 ml-[10px] bg-transparent mt-[35px]"
@@ -69,27 +69,27 @@ const Cart = () => {
                   src={urlFor(item?.image[0])}
                   className="w-[180px] h-[150px] rounded-[15px] bg-[#ebebeb]"
                 />
-                <div className="item-desc">
+                <div>
                   <div className="flex justify-between w-[350px] text-[#324d67] top">
                     <h5>{item.name}</h5>
                     <h4>${item.price}</h4>
                   </div>
                   <div className="flex justify-between w-[350px] text-[#324d67] mt-[60px]">
                     <div>
-                      <p className="border-[1px] border-gray p-[6px]">
+                      <p className="border-[1px] border-gray p-1 flex w-[100px] justify-between items-center">
                         <span
-                          className="border-r-[1px] border-[#808080d9] text-[#f02d34]"
+                          className="text-[#f02d34] border-r border-gray w-1/3 flex items-center justify-center"
                           onClick={() =>
                             toggleCartItemQuantity(item._id, "dec")
                           }
                         >
                           <AiOutlineMinus />
                         </span>
-                        <span className="border border-r-[1px] border-[#808080d9]">
+                        <span>
                           {item.quantity}
                         </span>
                         <span
-                          className="text-[rgb(49, 168, 49)]"
+                          className="text-[rgb(49, 168, 49)] border-l border-gray w-1/3 flex items-center justify-center"
                           onClick={() =>
                             toggleCartItemQuantity(item._id, "inc")
                           }
@@ -100,7 +100,7 @@ const Cart = () => {
                     </div>
                     <button
                       type="button"
-                      className="remove-item"
+                      className="text-2xl text-[#f02d34] cursor-pointer bg-transparent border-none"
                       onClick={() => onRemove(item._id)}
                     >
                       <TiDeleteOutline />
