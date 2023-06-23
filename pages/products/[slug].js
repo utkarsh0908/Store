@@ -15,13 +15,18 @@ const ProductDetails = ({ product, products }) => {
   const [index, setIndex] = useState(0);
   const {decQty, incQty, qty, onAdd} = useStateContext()
 
+  const fields = [];
+  for (let i = 1; i <= 4; i++) {
+    fields.push(<div><AiFillStar /></div>);
+  }
+
 
   return (
-    <div>
-      <div className="flex gap-10 m-10 mt-16 text-[#324d67]">
-        <div>
-          <div className="image-container">
-            <img src={urlFor(image && image[index])} alt="productImg" className="rounded-[15px] bg-[#ebebeb] w-[400px] h-[400px] cursor-pointer transition-transform duration-300 ease-in-out hover:bg-[#f02d34]"/>
+    <div className="py-32">
+      <div className="flex flex-col md:flex-row gap-10 text-[#324d67]">
+        <div className="p-4">
+          <div>
+            <img src={urlFor(image && image[index])} alt="productImg" className="object-cover rounded-[15px] bg-[#ebebeb] w-screen h-auto md:w-[300px] md:h-[300px] cursor-pointer transition-transform duration-300 ease-in-out hover:bg-[#f02d34]"/>
           </div>
           <div className="flex gap-2.5 mt-[20px]">
             {image?.map((item, ind)=>(
@@ -29,20 +34,17 @@ const ProductDetails = ({ product, products }) => {
             ))}
           </div>
         </div>
-        <div className="product-detail-desc">
-          <h1>{name}</h1>
-          <div className="reviews">
-            <div><AiFillStar /></div>
-            <div><AiFillStar /></div>
-            <div><AiFillStar /></div>
-            <div><AiFillStar /></div>
+        <div className="p-4">
+          <h1 className="text-xl md:text-3xl">{name}</h1>
+          <div className="flex items-center gap-2 md:gap-5 mt-2 md:mt-10 text-[#f02d34]">
+            {fields}
             <div><AiOutlineStar /></div>
             <p>(20)</p>
           </div>
-          <h4 className="mt-[10px]">Details</h4>
-          <p className="mt-[10px]">{details}</p>
-          <p className="font-bold text-2xl mt-[30px] text-[#f02d34]">${price}</p>
-          <div className="flex gap-5 mt-[10px] items-center">
+          <h4 className="mt-[10px] text-lg">Details</h4>
+          <p className="md:mt-[10px]">{details}</p>
+          <p className="font-bold text-2xl mt-4 md:mt-[30px] text-[#f02d34]">${price}</p>
+          <div className="flex gap-5 md:mt-[10px] items-center">
             <h3>Quantity:</h3>
             <p className="border border-gray-500 p-1 flex">
               <span className="text-base px-[12px] py-[6px] cursor-pointer border-r border-gray-500 flex items-center" onClick={decQty}>

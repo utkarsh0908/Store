@@ -4,7 +4,7 @@ import Footer from "./Footer"
 
 const Layout = ({children}) => {
   return (
-    <div className='p-[10px]'>
+    <div>
       <Head>
         <title>Store</title>
       </Head>

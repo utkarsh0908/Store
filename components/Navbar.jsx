@@ -8,24 +8,20 @@ const Navbar = () => {
 
   return (
     <div
-      className="flex 
-    border
-    justify-between
-    my-[6px]
-    mx-[18px]
-    relative "
-    >
+      className="flex z-10 fixed justify-between py-[6px] px-[18px] w-screen">
       <p className="  text-gray-600  text-lg">
         <Link href="/">Store</Link>
       </p>
       <button
         type="button"
-        className="cart-icon"
+        className="text-gray-500 cursor-pointer relative transition-transform duration-400 border-none bg-transparent hover:scale-110"
         onClick={() => setShowCart(true)}
       >
-        <AiOutlineShopping />
+        <span className="text-2xl">
+          <AiOutlineShopping />
+        </span>
         <span
-          className="absolute  mt-[-8px]  text-[12px]  text-[#eee]  bg-[#f02d34] w-[18px] h-[18px] font-semibold rounded-[50%]  text-center" >
+          className="absolute mt-[-30px] text-[10px] text-[#eee] bg-[#f02d34] w-[15px] h-[15px] font-semibold rounded-full text-center" >
           {totalQuantities}
         </span>
       </button>

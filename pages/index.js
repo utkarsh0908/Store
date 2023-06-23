@@ -1,24 +1,22 @@
-import Footer from "../components/Footer"
 import FooterBanner from "../components/FooterBanner"
-import Cart from "../components/Cart"
 import HeroBanner from "../components/HeroBanner"
-import Layout from "../components/Layout"
-import Navbar from "../components/Navbar"
 import Product from "../components/Product"
 import {client} from '../lib/client'
 
 export default function Home({products, banner}) {
   return (
     <>
+    <div className="py-16">
       <HeroBanner heroBanner={banner.length && banner[0]}/>
-      <div className="products-heading">
-        <h2>Best Selling Headphones</h2>
-        <p>Speakers of many variations</p>
+      <div className="text-center my-20 text-[#324d67]">
+        <h2 className="text-4xl font-extrabold">Best Selling Headphones</h2>
+        <p className="text-base font-light">Speakers of many variations</p>
       </div>
-      <div className="products-container">
+      <div className="flex flex-wrap justify-center gap-5 mt-20 w-full">
         {products?.map((product) => <Product key={product._id} product={product}/>)}
       </div>
       <FooterBanner footerBanner={banner.length && banner[0]}/>
+    </div>
     </>
   )
 }

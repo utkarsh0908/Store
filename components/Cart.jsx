@@ -7,7 +7,6 @@ import {
   AiOutlineShopping,
 } from "react-icons/ai";
 import { TiDeleteOutline } from "react-icons/ti";
-import toast from "react-hot-toast";
 
 import { useStateContext } from "../context/stateContext";
 import { urlFor } from "../lib/client";
@@ -28,7 +27,7 @@ const Cart = () => {
       className="w-screen bg-[rgba(0, 0, 0, 0.5)] fixed right-0 top-0 z-[100] transition-all duration-1000 ease-in-out"
       ref={cartRef}
     >
-      <div className="border h-screen w-[600px] bg-white float-right px-[40px] py-[10px] relative">
+      <div className="border h-screen w-[300px] md:w-[600px] bg-white float-right py-2  md:py-3 relative">
         <button
           type="button"
           className="flex items-center text-[18px] font-medium cursor-pointer gap-2 ml-[10px] bg-transparent mt-[35px]"
@@ -42,18 +41,18 @@ const Cart = () => {
         </button>
 
         {cartItems.length < 1 && (
-          <div className="m-[40px] text-center">
-            <div className="flex justify-center">
-              <AiOutlineShopping size={150} />
+          <div className="m-4 md:m-[40px] text-center">
+            <div className="flex justify-center text-7xl md:text-[150px]">
+              <AiOutlineShopping/>
             </div>
-            <h3 className="font-semibold text-[20px]">
+            <h3 className="font-semibold text-lg md:text-xl">
               Your shopping bag is empty
             </h3>
             <Link href="/">
               <button
                 type="button"
                 onClick={() => setShowCart(false)}
-                className="w-full max-w-[400px] px-[10px] py-[12px] border-none rounded-[15px] text-[20px] mt-[10px] uppercase bg-[#f02d34] text-white cursor-pointer scale-100 transition duration-500 ease hover:scale-110"
+                className="w-full max-w-[400px] py-1 px-2 md:px-[10px] md:py-[12px] border-none rounded-[15px] text-sm md:text-xl mt-[10px] uppercase bg-[#f02d34] text-white cursor-pointer scale-100 transition duration-500 ease hover:scale-110"
               >
                 Continue Shopping
               </button>
@@ -64,17 +63,17 @@ const Cart = () => {
         <div className="flex flex-wrap justify-center gap-[15px] mt-[20px] w-full">
           {cartItems.length >= 1 &&
             cartItems.map((item) => (
-              <div className="flex gap-[30px] p-[20px]" key={item._id}>
+              <div className="flex w-full justify-between px-4 md:px-10" key={item._id}>
                 <img
                   src={urlFor(item?.image[0])}
-                  className="w-[180px] h-[150px] rounded-[15px] bg-[#ebebeb]"
+                  className="w-[70px] h-[70px] md:w-[180px] md:h-[150px] rounded-[15px] bg-[#ebebeb]"
                 />
-                <div>
-                  <div className="flex justify-between w-[350px] text-[#324d67] top">
+                <div className="flex flex-col ml-4">
+                  <div className="flex justify-between w-[150px] md:w-[350px] text-[#324d67] top text-xl">
                     <h5>{item.name}</h5>
                     <h4>${item.price}</h4>
                   </div>
-                  <div className="flex justify-between w-[350px] text-[#324d67] mt-[60px]">
+                  <div className="flex justify-between w-[150px] md:w-[350px] text-[#324d67] md:mt-[60px]">
                     <div>
                       <p className="border-[1px] border-gray p-1 flex w-[100px] justify-between items-center">
                         <span
@@ -111,13 +110,13 @@ const Cart = () => {
             ))}
         </div>
         {cartItems.length >= 1 && (
-          <div className="cart-bottom">
-            <div className="total">
-              <h3>Subtotal:</h3>
-              <h3>${totalPrice}</h3>
+          <div className="absolute bottom-0 p-8 w-full px-4 md:px-10">
+            <div className="flex justify-between mb-3">
+              <h3 className="text-xl font-semibold">Subtotal:</h3>
+              <h3 className="text-xl">${totalPrice}</h3>
             </div>
-            <div className="btn-container">
-              <button type="button" className="btn" onClick="">
+            <div className="mx-auto">
+              <button type="button" className="w-full px-4 py-2 rounded-3xl border-none text-xl text-white uppercase bg-red-500 transform transition-transform hover:scale-105">
                 Pay with Stripe
               </button>
             </div>
